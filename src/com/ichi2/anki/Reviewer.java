@@ -1834,6 +1834,7 @@ public class Reviewer extends AnkiActivity {
         }
         AnkiDroidApp.getCompat().setScrollbarFadingEnabled(webView, mPrefFadeScrollbars);
         Log.i(AnkiDroidApp.TAG, "Focusable = " + webView.isFocusable() + ", Focusable in touch mode = " + webView.isFocusableInTouchMode());
+        Log.d("mcomella", "WebView created.");
 
         return webView;
     }
@@ -2956,20 +2957,6 @@ public class Reviewer extends AnkiActivity {
 
 
     public boolean getRefreshWebviewAndInitializeWebviewVariables() {
-        List<AnkiFont> fonts = Utils.getCustomFonts(getBaseContext());
-        mCustomFonts = new HashMap<String, AnkiFont>();
-        for (AnkiFont f : fonts) {
-            mCustomFonts.put(f.getName(), f);
-        }
-        for (String s : new String[] { "nook" }) {
-            if (android.os.Build.DEVICE.toLowerCase().indexOf(s) != -1
-                    || android.os.Build.MODEL.toLowerCase().indexOf(s) != -1) {
-                return true;
-            }
-        }
-        if (mCustomFonts.size() != 0) {
-            return true;
-        }
         return false;
     }
 
